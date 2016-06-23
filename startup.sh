@@ -2,6 +2,7 @@
 
 # set the letsencrypt domain to test.example.com if its not already set as an environmental variable.
 export LETSENCRYPT_DOMAIN=${LETSENCRYPT_DOMAIN:-"test.example.com"}
+export PROXY_DOMAIN=${PROXY_DOMAIN:-"test"}
 
 echo "Populate confd templates"
 confd -onetime -backend env
