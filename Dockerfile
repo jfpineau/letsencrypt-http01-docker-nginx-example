@@ -9,7 +9,7 @@ RUN \
   rm -rf /var/lib/apt/lists/*
 
 # install letsencrypt.sh into /srv/letsencrypt
-RUN git clone https://github.com/lukas2511/letsencrypt.sh.git /srv/letsencrypt
+RUN git clone https://github.com/jfpineau/letsencrypt.sh.git /srv/letsencrypt
 
 # configure letsencrypt.sh
 RUN chmod +x /srv/letsencrypt/letsencrypt.sh && \
