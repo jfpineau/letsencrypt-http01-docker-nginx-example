@@ -4,13 +4,16 @@ server {
     listen       443;
     server_name  {{getenv "LETSENCRYPT_DOMAIN"}};
     access_log /var/log/nginx/https.log;
-
+    
+    resolver {{getenv "DOCKER_DOMAIN"}};
+    set $upstream https://{{ getenv "PROXY_DOMAIN" }};
+    
     ssl                  on;
     ssl_certificate      /srv/letsencrypt/certs/{{getenv "LETSENCRYPT_DOMAIN"}}/fullchain.pem;
     ssl_certificate_key  /srv/letsencrypt/certs/{{getenv "LETSENCRYPT_DOMAIN"}}/privkey.pem;
 
     location / {
-      proxy_pass https://{{ getenv "PROXY_DOMAIN" }};
+      proxy_pass $upstream;
     }
 
 
